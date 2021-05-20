@@ -28,7 +28,7 @@ struct Pipe
         {
             if (i == topHeight - 1)
             {
-                mvaddstr(i, pipeX, "[_]");
+                mvaddstr(i, pipeX, "[_]"); // moves the cursor and prints characters simulatenously
             }
             else {
                 mvaddch(i, pipeX, '[');
@@ -65,16 +65,6 @@ void layout(int columns, int rows){
     }
 }
 
-void pipe_setup(int &topHeight, int &botHeight, int rows){
-    srand(time(NULL));
-    
-    topHeight = rand() % (rows - 12) + 3;
-    botHeight = (rows - 4) - topHeight - 4;
-
-    mvprintw(0, 0, "%d %d", topHeight, botHeight);
-}
-
-
 int main()
 {
     initscr();
@@ -83,6 +73,7 @@ int main()
     resizeterm(22, 100);
 
     int columns, rows;
+    int topHeight, botHeight;
     getmaxyx(stdscr, rows, columns);
 
     layout(columns, rows);
@@ -90,8 +81,8 @@ int main()
     for (int i = 1; i <= 10; ++i){
         srand(i);
 
-        int topHeight = rand() % (rows - 12) + 3;
-        int botHeight = (rows - 4) - topHeight - 4;
+        topHeight = rand() % (rows - 12) + 3;
+        botHeight = (rows - 4) - topHeight - 4;
 
         Pipe(topHeight, botHeight, i * 10, rows - 3, i);
     }
