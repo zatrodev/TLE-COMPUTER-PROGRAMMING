@@ -78,13 +78,18 @@ int main()
 
     layout(columns, rows);
 
-    for (int i = 1; i <= (columns - 3) / 3; ++i){
+    for (int i = 1, j = 17, k = 32; i <= (columns - 3) / 3; ++i, ++j){
         srand(i);
 
         topHeight = rand() % (rows - 4) + 2;
         botHeight = (rows - 4) - topHeight + 2;
 
-        Pipe(topHeight, botHeight, i * 3, rows - 3, i);
+        if (i > ((columns - 3) / 3) / 2){
+            Pipe(topHeight, botHeight, i * 3, rows - 3, k);
+            --k;
+        }
+        else
+            Pipe(topHeight, botHeight, i * 3, rows - 3, j);
     }
 
     refresh();
