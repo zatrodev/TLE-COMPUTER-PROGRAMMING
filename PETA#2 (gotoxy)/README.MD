@@ -8,8 +8,6 @@
 
 # EXERCISE OF THE DAY
 ### Code
-![image](https://user-images.githubusercontent.com/79815768/119089120-3bdbd980-ba3c-11eb-9744-e6fdd3ff874a.png)
-
+![image](https://user-images.githubusercontent.com/79815768/118934570-120fad80-b97d-11eb-93d9-201d9e1a44fb.png)
 ### Ouput Image
-![image](https://user-images.githubusercontent.com/79815768/119089130-3ed6ca00-ba3c-11eb-9bb2-e9bf42fe8fc7.png)
-
+![image](https://user-images.githubusercontent.com/79815768/118934714-3cfa0180-b97d-11eb-9f91-a16a2bdba891.png)
