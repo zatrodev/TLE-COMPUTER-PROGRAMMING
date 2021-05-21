@@ -1,94 +1,108 @@
 #include <ncurses.h>
-#include <time.h>
-#include <stdlib.h>
+#include <vector>
+#include <string>
+using namespace std;
 
-struct Pipe
-{
-    int topHeight, botHeight;
-    int pipeX, pipeY;
-    int color;
+void layout(vector <string> tree){
+    int rows = tree.size() + 2, columns;
+    int max = 0;
 
-    Pipe(int topHeight, int botHeight, int pipeX, int pipeY, int color)
-        : topHeight(topHeight)
-        , botHeight(botHeight)
-        , pipeX(pipeX)
-        , pipeY(pipeY)
-        , color(color)
-    {   
-        draw();
+    for (int i = 0; i < tree.size(); ++i){
+        if (tree[i].length() > max)
+            max = tree[i].length();
     }
 
-    void draw()
-    {
-        start_color();
-        init_pair(color, COLOR_BLACK, color);
-        attron(COLOR_PAIR(color));
-        
-        for (float i = 2; i < topHeight; ++i)
-        {
-            if (i == topHeight - 1)
-            {
-                mvaddstr(i, pipeX, "[_]"); // moves the cursor and prints characters simulatenously
-            }
-            else {
-                mvaddch(i, pipeX, '[');
-                mvaddch(i, pipeX + 2, ']');
-            }
-        }
+    columns = max + 2;
 
-        for (float i = 0; i < botHeight; ++i)
-        {
-            if (i == botHeight - 1)
-            {
-                mvaddstr(pipeY - i, pipeX, "[^]");
-            }
-            else
-            {
-                mvaddch(pipeY - i, pipeX, '[');
-                mvaddch(pipeY - i, pipeX + 2, ']');
-            }
-        }
-        attroff(COLOR_PAIR(2));
-    }
-};
+    resizeterm(rows, columns);
 
-void layout(int columns, int rows){
-    for (int i = 2; i < columns - 1; ++i){
-        mvaddch(1, i, '#');
-        mvaddch(rows - 2, i, '#');
+    for (int i = 0; i < columns; ++i){
+        mvaddch(0, i, '#');
+        mvaddch(rows - 1, i, '#');
     }
 
-    for (int i = 1; i < rows - 1; ++i){
-        mvaddch(i, 2, '#');
-        mvaddch(i, columns - 1, '#');
+    for (int i = 0; i < rows; ++i){
+        mvaddch(i, 0, '|');
+        mvaddch(i, columns - 1, '|');
     }
 }
 
-int main()
-{
+void draw(vector <string> tree){
+    int color;
+
+    start_color();
+
+    init_color(COLOR_BLACK, 0, 0, 0);
+    init_color(COLOR_RED, 165, 116, 73);
+    init_color(COLOR_YELLOW, 255, 255, 0);
+    init_pair(1, COLOR_GREEN, COLOR_BLACK);
+    init_pair(2, COLOR_RED, COLOR_BLACK);
+    init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(4, COLOR_CYAN, COLOR_BLACK);
+
+    for (int i = 0; i < tree.size(); ++i){
+        for (int j = 0; j < tree[i].length(); ++j){
+            start_color();
+            switch(tree[i][j]){
+                case '"':
+                case '+':
+                    color = 1;
+                    attron(COLOR_PAIR(color));  
+                    break;
+                case '0':
+                case'O':
+                    color = 2;
+                    attron(COLOR_PAIR(color));
+                    attron(A_BOLD);
+                    break;
+                case '.':
+                    color = 3;
+                    attron(COLOR_PAIR(color));
+                    break;
+                case '#':
+                    color = 4;
+                    attron(COLOR_PAIR(color));
+                    break;
+            }
+
+            mvaddch(i + 1, j + 1, tree[i][j]);
+            attroff(COLOR_PAIR(color));
+        }
+    }
+}
+
+int main(){
     initscr();
-    noecho();
     curs_set(0);
-    resizeterm(22, 100);
 
     int columns, rows;
-    int topHeight, botHeight;
     getmaxyx(stdscr, rows, columns);
 
-    layout(columns, rows);
+    vector <string> tree = {
+        "          .     .  .      +     .      .          .",
+        "     .       .      .     #       .           .",
+        "        .      .         ###            .      .      .",
+        "      .      .   \"#:. .:##\"##:. .:#\"  .      .",
+        "          .      . \"####\"###\"####\"  .",
+        "       .     \"#:.    .:#\"###\"#:.    .:#\"  .        .       .",
+        "  .             \"#########\"#########\"        .        .",
+        "        .    \"#:.  \"####\"###\"####\"  .:#\"   .       .",
+        "     .     .  \"#######\"\"##\"##\"\"#######\"                  .",
+        "                .\"##\"#####\"#####\"##\"           .      .",
+        "    .   \"#:. ...  .:##\"###\"###\"##:.  ... .:#\"     .",
+        "      .     \"#######\"##\"#####\"##\"#######\"      .     .",
+        "    .    .     \"#####\"\"#######\"\"#####\"    .      .",
+        "            .     \"      000      \"    .     .",
+        "       .         .   .   000     .        .       .",
+        ".. .. ..................O000O........................ ......"
+    };
 
-    for (int i = 1; i <= (columns - 3) / 3; ++i){
-        srand(i);
-
-        topHeight = rand() % (rows - 4) + 2;
-        botHeight = (rows - 4) - topHeight + 2;
-
-        Pipe(topHeight, botHeight, i * 3, rows - 3, i);
-    }
+    layout(tree);
+    draw(tree);
 
     refresh();
-    while (getch() != 'q'){}
-    
+    while(getch() != 'q'){}
+
     endwin();
 
     return 0;
