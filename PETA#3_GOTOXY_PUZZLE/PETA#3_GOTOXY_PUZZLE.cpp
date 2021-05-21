@@ -31,7 +31,7 @@ void draw(vector <string> tree){
     int color;
 
     start_color();
-    
+
     init_color(COLOR_BLACK, 0, 0, 0);
     init_color(COLOR_RED, 165, 116, 73);
     init_color(COLOR_YELLOW, 255, 255, 0);
@@ -53,6 +53,7 @@ void draw(vector <string> tree){
                 case'O':
                     color = 2;
                     attron(COLOR_PAIR(color));
+                    attron(A_BOLD);
                     break;
                 case '.':
                     color = 3;
