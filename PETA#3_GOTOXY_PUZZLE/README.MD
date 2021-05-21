@@ -4,7 +4,7 @@
 - Colors above 7 are not supported in [onlinegdb](https://www.onlinegdb.com/online_c++_compiler)
 <br><br>
 
-![image](https://user-images.githubusercontent.com/79815768/119074867-628d1680-ba22-11eb-92bd-c399dd908f58.png)
+![image](https://user-images.githubusercontent.com/79815768/119093193-f91d0000-ba41-11eb-84aa-baba82edbdba.png)
 
 # EXERCISE OF THE DAY
 ### Code
@@ -12,4 +12,3 @@
 
 ### Ouput Image
 ![image](https://user-images.githubusercontent.com/79815768/119089130-3ed6ca00-ba3c-11eb-9bb2-e9bf42fe8fc7.png)
-
