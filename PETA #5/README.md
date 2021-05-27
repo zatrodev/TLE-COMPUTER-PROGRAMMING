@@ -8,7 +8,7 @@
 
 # EXERCISE OF THE DAY
 ### Code
-- Code is located above 
+- Code is in `exercise_of_the_day.cpp`
 
 ### Ouput Image
 ![image](https://user-images.githubusercontent.com/79815768/119772793-50174f00-bef2-11eb-9c6d-8d17ec9e13d2.png)
