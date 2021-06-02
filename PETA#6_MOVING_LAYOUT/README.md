@@ -1,4 +1,4 @@
-# Output Image
+# Output Video
 ### Reminders
 - Executed in [replit](https://replit.com/~) <br> <br>
 ![6957e24b-3ef8-4600-85ae-bb9ac5262d84](https://user-images.githubusercontent.com/79815768/120439277-e9dc7180-c3b4-11eb-84d8-a7df122abb59.gif)
