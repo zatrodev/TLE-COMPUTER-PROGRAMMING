@@ -1,10 +1,8 @@
 # Output Image
 ### Reminders
 - Executed in [replit](https://replit.com/~) <br>
-- Colors above 7 are not supported in [onlinegdb](https://www.onlinegdb.com/online_c++_compiler)
-<br><br>
 
-![image](https://user-images.githubusercontent.com/79815768/119795076-b27c4980-bf0a-11eb-8edc-1215d5a167c4.png)
+![image](https://user-images.githubusercontent.com/79815768/120431121-a250e800-c3aa-11eb-9698-d1ad4a2c463b.png)
 
 # EXERCISE OF THE DAY
 ### Code
