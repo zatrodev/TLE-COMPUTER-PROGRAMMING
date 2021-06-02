@@ -82,13 +82,13 @@ void draw(vector <string> fig, int figX, int figY){
 void controller(int &botX, int &botY){
     switch (getch()){
         case 'w':
-            botY -= 2;
+            botY -= 7;
             break;
         case 'a':
             botX -= 6;
             break;
         case 's':
-            botY += 2;
+            botY += 7;
             break;
         case 'd':
             botX += 6;
