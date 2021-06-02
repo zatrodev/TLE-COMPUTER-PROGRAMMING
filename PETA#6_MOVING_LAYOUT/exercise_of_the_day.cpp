@@ -88,10 +88,10 @@ void controller(int &carX, int &carY){
             carX -= 6;
             break;
         case 's':
-            carY += 2;
+            carY += 7;
             break;
         case 'd':
-            carX += 7;
+            carX += 6;
             break;
         case 'q':
             END = true;
