@@ -82,7 +82,7 @@ void draw(vector <string> fig, int figX, int figY){
 void controller(int &carX, int &carY){
     switch (getch()){
         case 'w':
-            carY -= 2;
+            carY -= 7;
             break;
         case 'a':
             carX -= 6;
@@ -91,7 +91,7 @@ void controller(int &carX, int &carY){
             carY += 2;
             break;
         case 'd':
-            carX += 6;
+            carX += 7;
             break;
         case 'q':
             END = true;
