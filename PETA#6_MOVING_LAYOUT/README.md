@@ -8,7 +8,7 @@
 
 # EXERCISE OF THE DAY
 ### Code
-- Code is in `exer_of_the_day.cpp`
+- Code is in `exercise_of_the_day.cpp`
 
 ### Ouput Image
 ![image](https://user-images.githubusercontent.com/79815768/120429813-a0862500-c3a8-11eb-8b2c-0f172425c8a7.png)
